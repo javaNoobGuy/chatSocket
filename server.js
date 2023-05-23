@@ -4,6 +4,8 @@ const http = require('http').createServer(app);
 
 const io = require('socket.io')(http);
 
+app.use(express.static(__dirname + "/public"));
+
 app.get('/', (req, res) => res.sendFile(__dirname + '/index.html'));
 
 io.on('connection', (socket) => {console.log('usuário conectado id da conexão ',socket.id )
