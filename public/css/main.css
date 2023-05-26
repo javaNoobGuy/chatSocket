@@ -26,3 +26,29 @@
     display: flex;
     flex-direction: column;
 }
+
+.mensagens{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.userText span{
+    background-color: greenyellow;
+    padding: 0.5em;
+}
+
+.userText{
+    margin-top: 1.5em;
+    
+}
+
+.othersText{
+    margin-top: 1.5em;
+
+}
+
+.othersText span{
+    background-color: gray;
+    padding: 0.5em;
+}
