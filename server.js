@@ -10,6 +10,29 @@ app.use(express.static(__dirname + "/public"));
 
 app.get('/', (req, res) => res.sendFile(__dirname + 'public/index.html'));
 
+function User(){
+    this.talks = [];
+    
+}
+
+function Message(owner, content){
+
+    this.owner = owner;
+    this.content = content;
+
+}
+
+function Talk(users){
+
+    this.users = users;
+    this.messages = [];
+    this.addMessage = function(message){
+        this.messages.push(message);
+    }
+
+
+}
+
 io.on('connection', (socket) => {console.log('usuário conectado id da conexão ',socket.id )
 
     socket.on('disconnect', (socket) => console.log('you was diconnected',socket))
