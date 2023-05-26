@@ -12,7 +12,9 @@ app.get('/', (req, res) => res.sendFile(__dirname + 'public/index.html'));
 
 function User(){
     this.talks = [];
-    
+    this.addTalk = function(){
+        
+    }
 }
 
 function Message(owner, content){
