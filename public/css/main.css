@@ -1,0 +1,28 @@
+
+.upbar{
+    display: flex;
+    flex-direction: row;
+
+
+}
+
+.downbar span{
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.userGeneral{
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+}
+
+.talkInfo{
+    display: flex;
+    flex-direction: column;
+}
