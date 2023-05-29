@@ -8,11 +8,14 @@ const io = require('socket.io')(http);
 
 app.use(express.static(__dirname + "/public"));
 
+var usuarios = [];
+
 app.get('/', (req, res) => res.sendFile(__dirname + 'public/index.html'));
 
-function User(id){
+function User(id, nome){
     this.talks = [];
     this.id = id;
+    this.nome;
     this.addTalk = function(anotherUser){
         let talkUsers = [this, anotherUser ];
 
@@ -36,7 +39,7 @@ function Talk(users){
     }
     this.messages = [];
     this.addMessage = function(message){
-        this.messages.push(message);
+        this.messages.push(message); 
     }
 
 
@@ -45,8 +48,6 @@ function Talk(users){
 io.on('connection', (socket) => {console.log('usuário conectado id da conexão ',socket.id )
 
     socket.on('disconnect', (socket) => console.log('you was diconnected',socket))
-
-    socket.on('chat message', (socket) => {console.log(socket);io.emit('chat message', socket);});
 
     socket.on('sendItToServer', (msg) =>{
 
@@ -58,6 +59,24 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
 })
 
 
+io.on('loginMade',(data) =>{
+
+    let res = null;
+    
+    for(let i = 0 ; i < usuarios.length; i++){
+
+        if(usuarios[i].nome == data.nome){
+            res = false;
+            break;
+        }else{
+            res = true;
+        }
+
+    }
+
+    io.emit('isNameValid', res);
+
+});
 
 http.listen(3000, () =>{
     console.log("fdsfsdf");
