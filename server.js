@@ -10,10 +10,13 @@ app.use(express.static(__dirname + "/public"));
 
 app.get('/', (req, res) => res.sendFile(__dirname + 'public/index.html'));
 
-function User(){
+function User(id){
     this.talks = [];
-    this.addTalk = function(){
-        
+    this.id = id;
+    this.addTalk = function(anotherUser){
+        let talkUsers = [this, anotherUser ];
+
+        this.talks.push(new Talk(talkUsers));
     }
 }
 
@@ -27,6 +30,10 @@ function Message(owner, content){
 function Talk(users){
 
     this.users = users;
+    this.talkId = users[0].id +'-'+ users[1].id;
+    if(users.lenght > 2){
+
+    }
     this.messages = [];
     this.addMessage = function(message){
         this.messages.push(message);
