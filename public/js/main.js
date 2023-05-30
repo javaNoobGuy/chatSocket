@@ -1,7 +1,7 @@
 var socket = io();
-if(sessionStorage.getItem('nomeUser') == undefined){
+if(localStorage.getItem('nomeUser') == undefined){
 
-    sessionStorage.setItem('nomeUser','');
+    localStorage.setItem('nomeUser','');
 
 }
 
@@ -19,38 +19,46 @@ function login(){
         if(!res){
             alert('nome já usado amigo ;)');
         }else{
-            sessionStorage.setItem('nomeUser',nome);
+            localStorage.setItem('nomeUser',nome);
             socket.emit('addUser',{nome});
             location.href = "talk.html";
         }});
 
-if(location.href = "http://localhost:3000/talk.html"){
+if(location.href == "http://localhost:3000/talk.html"){
     socket.emit('getMessages');
+    console.log('requsisção de mensagens');
 }
 
 socket.on('update', (data) =>{
     messages = data;
+    console.log(messages);
     renderM();
 });
 
 function renderM(){
-    for(let i = 0; i < messages.lenght;i++){
-        let mensagens = document.getElementById('mensagens');
-        mensagens.innerHTML = "";
+    let mensagens = document.getElementById('campoMensagem');
+    mensagens.innerHTML = "";
+    for(let i = 0; i < messages.length;i++){
+        console.log('desenhando a ');
+        console.log(messages[i]);
+        
         let mensagemAtual = document.createElement('div');
-        mensagemAtual.innerText = messages[i].content;
-        if(messages[i].owner.nome = sessionStorage.getItem('nomeUser')){
+        let span = document.createElement('span');
+        span.innerText = messages[i].content;
+        mensagemAtual.append(span);
+        if(messages[i].owner.nome = localStorage.getItem('nomeUser')){
             mensagemAtual.className = 'userText';
         }else{
             mensagemAtual.className = 'othersText';
         }
-        mensagens.append(ensagemAtual);
+        mensagens.append(mensagemAtual);
     }
 }
 
 function send(){
     let content = document.getElementById('mensagem').value;
-    let nome = sessionStorage.getItem('nomeUser');
+    let nome = localStorage.getItem('nomeUser');
+    console.log('enviando mensagens ao servidor');
     socket.emit('sendMessage', {content, nome});
 
 }

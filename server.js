@@ -71,6 +71,7 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
             if(usuarios[i].nome == data.nome){
                 usuarios[i].id = socket.id;
                 messages.push(new Message(usuarios[i],data.content));
+                console.log(messages);
                 socket.emit('update', messages);
             }
 
