@@ -46,7 +46,8 @@ function renderM(){
         let span = document.createElement('span');
         span.innerText = messages[i].content;
         mensagemAtual.append(span);
-        if(messages[i].owner.nome == localStorage.getItem('nomeUser')){
+        if(messages[i].owner.nom 
+           e == localStorage.getItem('nomeUser')){
             mensagemAtual.className = 'userText';
         }else{
             mensagemAtual.className = 'othersText';
