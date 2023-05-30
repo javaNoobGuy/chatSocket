@@ -58,9 +58,9 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
 
     });
 
-    io.on('getMessages',() =>{
+    socket.on('getMessages',() =>{
 
-        io.emit('update', messages);
+        socket.emit('update', messages);
 
     });
 
@@ -104,6 +104,7 @@ socket.on('loginMade',(data) =>{
 socket.on('addUser', (data) =>{
     console.log(data);
     usuarios.push(new User(socket.id, data.nome));
+    io.emit('update', messages);
     console.log(usuarios);
 
 });
