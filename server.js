@@ -1,5 +1,5 @@
+const { Console } = require('console');
 const express = require('express');
-const { truncate } = require('fs');
 
 const app = express();
 
@@ -50,8 +50,8 @@ function Talk(users){
 
 io.on('connection', (socket) => {console.log('usuário conectado id da conexão ',socket.id )
 
-    socket.on('disconnect', (socket) =>{
-        let newUsuarios = [];
+    socket.on('disconnect', () =>{
+        /*let newUsuarios = [];
 
         for(let i = 0; i < usuarios.length;i++){
 
@@ -62,9 +62,9 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
 
         }
 
-        usuarios = newUsuarios;
+        //usuarios = newUsuarios;
         io.emit('update', messages);
-        io.emit('userUpdate', usuarios);
+        io.emit('userUpdate', usuarios);*/
     })
 
     socket.on('getMessages',() =>{
@@ -87,14 +87,13 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
     socket.on('sendMessage',(data) =>{
 
         for(let i = 0; i < usuarios.length;i++){
-
+            
             if(usuarios[i].nome == data.nome){
                 usuarios[i].id = socket.id;
                 messages.push(new Message(usuarios[i],data.content));
                 usuarios[i].lastM = new Message(usuarios[i],data.content);
                 console.log(messages);
-                io.emit('update', messages);
-                io.emit('userUpdate', usuarios);
+                
             }
 
 

@@ -21,7 +21,8 @@ socket.on('isNameValid', (res) => {
     alert('nome já usado amigo ;)');
   } else {
     localStorage.setItem('nomeUser', nome);
-    socket.emit('addUser', { nome });
+    let dis = 'nope'
+    socket.emit('addUser', { nome});
     location.href = "talk.html";
   }
 });
@@ -33,9 +34,8 @@ if (location.href == "http://localhost:3000/talk.html") {
   socket.emit('updateId',{nome});
 }
 
-
-
 socket.on('update', (data) => {
+
   messages = data;
   console.log(messages);
   renderM();
@@ -46,7 +46,7 @@ socket.on('userUpdate', (data) =>{
 
     usuarios = data;
     console.log(usuarios);
-    renderU(usuarios);
+    renderU();
 
 
 })
