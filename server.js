@@ -9,13 +9,14 @@ const io = require('socket.io')(http);
 app.use(express.static(__dirname + "/public"));
 
 var usuarios = [];
+var messages = [];
 
 app.get('/', (req, res) => res.sendFile(__dirname + 'public/index.html'));
 
 function User(id, nome){
     this.talks = [];
     this.id = id;
-    this.nome;
+    this.nome = nome;
     this.addTalk = function(anotherUser){
         let talkUsers = [this, anotherUser ];
 
@@ -77,6 +78,12 @@ io.on('loginMade',(data) =>{
     io.emit('isNameValid', res);
 
 });
+
+io.on('addUser', (data) =>{
+
+    usuarios.push(new User(io.id, data.nome));
+
+})
 
 http.listen(3000, () =>{
     console.log("fdsfsdf");

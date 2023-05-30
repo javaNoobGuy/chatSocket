@@ -14,8 +14,9 @@ function login(){
         if(!res){
             alert('nome já usado amigo ;)');
         }else{
-            socket.emit('addUser');
             sessionStorage.setItem('nomeUser',nome);
+            socket.emit('addUser',{nome});
+            location.href = "talk.html";
         }
 
 
