@@ -60,7 +60,7 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
 
     socket.on('getMessages',() =>{
 
-        socket.emit('update', messages);
+        io.emit('update', messages);
 
     });
 
@@ -72,7 +72,7 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
                 usuarios[i].id = socket.id;
                 messages.push(new Message(usuarios[i],data.content));
                 console.log(messages);
-                socket.emit('update', messages);
+                io.emit('update', messages);
             }
 
 
