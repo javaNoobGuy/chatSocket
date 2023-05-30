@@ -1,4 +1,5 @@
 const express = require('express');
+const { truncate } = require('fs');
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(express.static(__dirname + "/public"));
 var usuarios = [];
 var messages = [];
 
-app.get('/', (req, res) => res.sendFile(__dirname + 'public/index.html'));
+app.get('/', (req, res) => res.sendFile(__dirname + 'public/login.html'));
 
 function User(id, nome){
     this.talks = [];
@@ -57,33 +58,35 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
 
     })
 
-})
+    
+socket.on('loginMade',(data) =>{
 
-
-io.on('loginMade',(data) =>{
-
-    let res = null;
+    let res = true;
     
     for(let i = 0 ; i < usuarios.length; i++){
 
         if(usuarios[i].nome == data.nome){
             res = false;
-            break;
         }else{
             res = true;
         }
 
     }
 
-    io.emit('isNameValid', res);
+    console.log(res);
+
+    socket.emit('isNameValid', res);
 
 });
 
-io.on('addUser', (data) =>{
+socket.on('addUser', (data) =>{
+    console.log(data);
+    usuarios.push(new User(socket.id, data.nome));
+    console.log(usuarios);
 
-    usuarios.push(new User(io.id, data.nome));
+});
 
-})
+});
 
 http.listen(3000, () =>{
     console.log("fdsfsdf");
