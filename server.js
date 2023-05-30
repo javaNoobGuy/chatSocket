@@ -56,7 +56,28 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
         console.log(msg);
         socket.broadcast.emit('sendItToServer', msg);
 
-    })
+    });
+
+    socket.on('getMessages',() =>{
+
+        socket.emit('update', messages);
+
+    });
+
+    socket.on('sendMessage',(data) =>{
+
+        for(let i = 0; i < usuarios.length;i++){
+
+            if(usuarios[i].nome == data.nome){
+                usuarios[i].id = socket.id;
+                messages.push(new Message(usuarios[i],data.content));
+                socket.emit('update', messages);
+            }
+
+
+        }
+
+    });
 
     
 socket.on('loginMade',(data) =>{

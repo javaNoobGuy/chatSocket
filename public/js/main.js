@@ -25,7 +25,7 @@ function login(){
         }});
 
 if(location.href = "http://localhost:3000/talk.html"){
-    renderM();
+    socket.emit('getMessages');
 }
 
 socket.on('update', (data) =>{
@@ -39,13 +39,20 @@ function renderM(){
         mensagens.innerHTML = "";
         let mensagemAtual = document.createElement('div');
         mensagemAtual.innerText = messages[i].content;
-        if(mensages[i].owner.nome = sessionStorage.getItem('nomeUser')){
+        if(messages[i].owner.nome = sessionStorage.getItem('nomeUser')){
             mensagemAtual.className = 'userText';
         }else{
             mensagemAtual.className = 'othersText';
         }
-        mensagens.append()
+        mensagens.append(ensagemAtual);
     }
+}
+
+function send(){
+    let content = document.getElementById('mensagem').value;
+    let nome = sessionStorage.getItem('nomeUser');
+    socket.emit('sendMessage', {content, nome});
+
 }
 
 
