@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>chat</title>
+</head>
+<body>
+    <header>
+
+        <div class="upbar">
+
+            <span>WhatSapp</span>
+            <button><img src="" alt="camera"></button>
+            <button><img src="" alt="search"></button>
+            <button><img src="" alt="tres pontos"></button>
+
+        </div>
+
+        <div class="downbar">
+
+            <span>CONVERSAS</span><span>STATUS</span><span>CHAMADAS</span>
+
+        </div>
+
+    </header>
+
+    <main>
+
+        <div class="userGeneral">
+
+            <button><img src="" alt="userImage"></button>
+            <div class="title">
+                <div class="userName">nome</div>
+                <div class="lastMessage">messagem</div>
+            </div>
+
+            <div class="talkInfo">
+
+                <div class="lasTimeMessage">tempo da ultima mensagem</div>
+                <div class="qtaNoSeenMessages">2</div>
+
+            </div>
+            
+        </div>
+
+        <hr>
+
+        <div class="userGeneral" onclick="location.href='talk.html'">
+
+            <button><img src="" alt="userImage"></button>
+            <div class="title">
+                <div class="userName">nome</div>
+                <div class="lastMessage">messagem</div>
+            </div>
+
+            <div class="talkInfo">
+
+                <div class="lasTimeMessage">tempo da ultima mensagem</div>
+                <div class="qtaNoSeenMessages">2</div>
+
+            </div>
+            
+        </div>
+
+        <hr>
+
+        
+
+
+
+    </main>
+
+    <ul id="mensagens"></ul>
+    <form>
+        
+        <input type="text" id="nome" placeholder="nomeUser">
+        <br>
+        <input type="text" id="mensagem" placeholder="Sua Mensagem">
+        <br>
+        <button>send</button>
+    </form>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+
+        const socket = io()
+
+        socket.on('connect', () =>{
+
+            console.log('vc foi conectado ', socket.id);
+
+            socket.emit('sendItToServer', 'oi server');
+
+        })
+
+        socket.on('sendItToServer', (msg) =>{
+            console.log(msg);
+        });
+
+        const nomeInput = document.getElementById('nome')
+
+        const mensagemInput = document.getElementById('mensagem')
+
+        const mensagens = document.getElementById("mensagens")
+
+        document.querySelector('form').addEventListener('submit', event =>{
+            event.preventDefault();
+
+            const nome = nomeInput.value;
+
+            const mensagem = mensagemInput.value;
+
+            nome.trim() && mensagem.trim() && socket.emit('chat message',{nome, mensagem})
+            mensagemInput.value = '';
+            nomeInput.disable = true;
+        });
+
+        socket.on('chat message', dados =>{
+
+            const lista = document.createElement('li');
+            lista.textContent = `${dados.nome} : ${dados.mensagem}`
+            mensagens.appendChild(lista);
+
+        })
+
+        
+
+
+    </script>
+
+</body>
+</html>
