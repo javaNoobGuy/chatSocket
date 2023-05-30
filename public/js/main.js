@@ -9,7 +9,7 @@ function login(){
 
     let nome = document.getElementById('nome').value;
     socket.emit('loginMade',{nome});
-    io.on('isNameValid', (res) =>{
+    socket.on('isNameValid', (res) =>{
 
         if(!res){
             alert('nome já usado amigo ;)');
