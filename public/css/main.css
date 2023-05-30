@@ -1,9 +1,35 @@
+*{
+
+    padding: 0;
+    margin: 0;
+
+
+}
+
+main{
+
+    display: flex;
+    flex-direction: row;
+    height:100%;
+    height: 100%;
+    background-color: blueviolet;
+
+
+}
+
+.center{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    background-color: aqua;
+
+}
+
 
 .upbar{
     display: flex;
     flex-direction: row;
-
-
 }
 
 .downbar span{
@@ -11,9 +37,21 @@
     padding-right: 0.5em;
 }
 
+.late{
+    width: fit-content;
+    background-color: brown;
+}
+
+.talkbar{
+    margin-top: 18.7rem;
+    position: absolute;
+
+}
+
 .userGeneral{
     display: flex;
     flex-direction: row;
+    background-color: blueviolet;
     align-content: space-between;
 }
 
@@ -30,6 +68,7 @@
 .mensagens{
     display: flex;
     flex-direction: column;
+    height: 100%;
 
 }
 

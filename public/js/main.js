@@ -28,12 +28,21 @@ socket.on('isNameValid', (res) => {
 if (location.href == "http://localhost:3000/talk.html") {
   socket.emit('getMessages');
   console.log('requsisção de mensagens');
+  
+renderM();
 }
+
+
 
 socket.on('update', (data) => {
   messages = data;
   console.log(messages);
-  renderM();
+  
+});
+
+
+socket.on('userJoin',() =>{
+
 });
 
 function renderM() {

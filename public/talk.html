@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +8,14 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/main.css">
 </head>
+
 <body>
     <header>
 
         <div class="upbar">
 
-            <button class="backButton" onclick="location.href='index.html'"><img src="" alt="back"><img src="" alt="fotoPerfil"></button>
+            <button class="backButton" onclick="location.href='index.html'"><img src="" alt="back"><img src=""
+                    alt="fotoPerfil"></button>
             <div class="nomeUser"> nome user</div>
             <button>chamda de video</button><button>audio</button><button>tres pontos</button>
 
@@ -23,17 +26,29 @@
 
     <main>
 
-        <div class="mensagens" id="campoMensagem">
-            <div class="userText"><span>asdasdasdasdasasdsda</span></div>
-            <div class="othersText"><span>asdasdasdasdasasdsda</span></div>
-            <div class="userText"><span>asdasdasdasdasasdDAsda</span></div>
+        <div class="late">
+            <div class="userGeneral">  
+                <button><img src="" alt="userImage"></button>
+                <div class="title">
+                    <div class="userName">nome</div>
+                    <div class="lastMessage">messagem</div>
+                </div>
+            </div>
         </div>
 
-        <div class="talkbar">
+        <div class="center">
+            <div class="mensagens" id="campoMensagem">
+                <div class="userText"><span>asdasdasdasdasasdsda</span></div>
+                <div class="othersText"><span>asdasdasdasdasasdsda</span></div>
+                <div class="userText"><span>asdasdasdasdasasdDAsda</span></div>
+            </div>
 
-            <input type="text" id="mensagem">
-            <button onclick="send()">send</button>
+            <div class="talkbar">
 
+                <input type="text" id="mensagem">
+                <button onclick="send()">send</button>
+
+            </div>
         </div>
 
     </main>
@@ -41,4 +56,5 @@
     <script src="js/main.js"></script>
 
 </body>
+
 </html>
