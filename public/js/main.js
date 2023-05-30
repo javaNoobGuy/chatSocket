@@ -6,6 +6,7 @@ if (localStorage.getItem('nomeUser') == undefined) {
 }
 
 messages = [];
+usuarios = [];
 
 function login() {
 
@@ -28,6 +29,8 @@ socket.on('isNameValid', (res) => {
 if (location.href == "http://localhost:3000/talk.html") {
   socket.emit('getMessages');
   console.log('requsisção de mensagens');
+  let nome = localStorage.getItem('nomeUser')
+  socket.emit('updateId',{nome});
 }
 
 
@@ -39,10 +42,41 @@ socket.on('update', (data) => {
   
 });
 
+socket.on('userUpdate', (data) =>{
 
-socket.on('userJoin',() =>{
+    usuarios = data;
+    console.log(usuarios);
+    renderU(usuarios);
 
-});
+
+})
+
+function renderU(){
+    let usersList = document.getElementById('usersList');
+    usersList.innerHTML = "";
+    for(let i = 0; i < usuarios.length;i++){
+
+        let currentUserDiv = document.createElement('div');
+        currentUserDiv.className = 'userGeneral';
+        let userImg  = document.createElement('img');
+        let title = document.createElement('div');
+        title.className = 'title';
+        let userName = document.createElement('div');
+        userName.className  = 'userName';
+        userName.innerText = usuarios[i].nome;
+        let lastMessage = document.createElement('div');
+        lastMessage.className = "lastMessage";
+        lastMessage.innerText = usuarios[i].lastM;
+
+        currentUserDiv.append(userImg);
+        title.append(userName);
+        title.append(lastMessage);
+        currentUserDiv.append(title);
+        usersList.append(currentUserDiv);
+
+    }
+
+}
 
 function renderM() {
   let mensagens = document.getElementById('campoMensagem');

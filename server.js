@@ -18,6 +18,7 @@ function User(id, nome){
     this.talks = [];
     this.id = id;
     this.nome = nome;
+    this.lastM = '';
     this.addTalk = function(anotherUser){
         let talkUsers = [this, anotherUser ];
 
@@ -49,20 +50,39 @@ function Talk(users){
 
 io.on('connection', (socket) => {console.log('usuário conectado id da conexão ',socket.id )
 
-    socket.on('disconnect', (socket) => console.log('you was diconnected',socket))
+    socket.on('disconnect', (socket) =>{
+        let newUsuarios = [];
 
-    socket.on('sendItToServer', (msg) =>{
+        for(let i = 0; i < usuarios.length;i++){
 
-        console.log(msg);
-        socket.broadcast.emit('sendItToServer', msg);
+            if(usuarios[i].id != socket.id){
+                newUsuarios.push(usuarios[i]);
+            }
 
-    });
+
+        }
+
+        usuarios = newUsuarios;
+        io.emit('update', messages);
+        io.emit('userUpdate', usuarios);
+    })
 
     socket.on('getMessages',() =>{
 
         socket.emit('update', messages);
 
     });
+
+    socket.on('updateId', (data) => {
+        for(let i = 0; i < usuarios.length;i++){
+
+            if(usuarios[i].nome == data.nome){
+                usuarios[i].id = socket.id;
+            }
+
+
+        }
+    })
 
     socket.on('sendMessage',(data) =>{
 
@@ -71,8 +91,10 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
             if(usuarios[i].nome == data.nome){
                 usuarios[i].id = socket.id;
                 messages.push(new Message(usuarios[i],data.content));
+                usuarios[i].lastM = new Message(usuarios[i],data.content);
                 console.log(messages);
                 io.emit('update', messages);
+                io.emit('userUpdate', usuarios);
             }
 
 
@@ -105,6 +127,7 @@ socket.on('addUser', (data) =>{
     console.log(data);
     usuarios.push(new User(socket.id, data.nome));
     io.emit('update', messages);
+    io.emit('userUpdate', usuarios);
     console.log(usuarios);
 
 });
