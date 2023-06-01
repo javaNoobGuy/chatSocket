@@ -13,8 +13,15 @@
     border: none;
 }
 
+.iconButtonwidth{
+    background-color: rgba(255, 0, 0, 0);
+    border: none;
+}
+
 header{
     background-color: rgb(1, 129, 106);
+    padding-top: 5px;
+    padding-bottom: 10px;
 }
 
 main{
@@ -23,7 +30,6 @@ main{
     flex-direction: row;
     height:100%;
     height: 100%;
-    background-color: blueviolet;
 
 
 }
@@ -41,6 +47,14 @@ main{
 .upbar{
     display: flex;
     flex-direction: row;
+}
+
+.upbar button{
+    padding-left: 10px;
+}
+
+.upbar:only-child{
+    padding-right: 10px;
 }
 
 .downbar span{
