@@ -25,7 +25,7 @@ socket.on('isNameValid', (res) => {
   }
 });
 
-if (location.href == "http://localhost:3000/talk.html") {
+if (location.href == "http://localhost:3000/talk.html" || location.href == "https://chatsocket.javanoobguy.repl.co/talk.html" ) {
   //socket.emit('getMessages');
   socket.emit('getMessages');
   console.log('requsisção de mensagens');
