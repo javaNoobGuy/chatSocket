@@ -67,6 +67,8 @@ main{
 .late{
     width: fit-content;
     background-color: white;
+    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .talkbar{
@@ -119,11 +121,13 @@ main{
 
 .userText{
     margin-top: 1.5em;
+    margin-left: 10px;
     
 }
 
 .othersText{
     margin-top: 1.5em;
+    margin-left: 10px;
 
 }
 

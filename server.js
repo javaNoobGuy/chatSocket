@@ -1,5 +1,4 @@
 const express = require('express');
-const { truncate } = require('fs');
 
 const app = express();
 
