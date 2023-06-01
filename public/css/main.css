@@ -1,9 +1,20 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
+
 *{
 
     padding: 0;
     margin: 0;
 
 
+}
+
+.backButton {
+    background-color: rgba(255, 0, 0, 0);
+    border: none;
+}
+
+header{
+    background-color: rgb(1, 129, 106);
 }
 
 main{
@@ -22,7 +33,7 @@ main{
     flex-direction: column;
     width: 100%;
     height: 100%;
-    background-color: aqua;
+    background-color:rgb(180, 180, 180)
 
 }
 
@@ -39,7 +50,7 @@ main{
 
 .late{
     width: fit-content;
-    background-color: brown;
+    background-color: white;
 }
 
 .talkbar{
@@ -51,8 +62,17 @@ main{
 .userGeneral{
     display: flex;
     flex-direction: row;
-    background-color: blueviolet;
+    background-color: white;
     align-content: space-between;
+}
+
+.userGeneral button{
+    height: fit-content;
+    width: fit-content;
+    border-radius: 10px;
+    margin-top: 6px;
+    background-color: gray;
+
 }
 
 .title{
@@ -66,6 +86,7 @@ main{
 }
 
 .mensagens{
+    
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -73,8 +94,11 @@ main{
 }
 
 .userText span{
-    background-color: greenyellow;
     padding: 0.5em;
+    border-radius: 5px;
+    font-family:'Segoe UI',sans-serif;
+    color: black;
+    background-color: rgb(231, 255, 219);
 }
 
 .userText{
@@ -88,6 +112,7 @@ main{
 }
 
 .othersText span{
-    background-color: gray;
+    border-radius: 5px;
+    background-color: white;
     padding: 0.5em;
 }
