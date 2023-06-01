@@ -112,7 +112,6 @@ socket.on('addUser', (data) =>{
 });
 
 http.listen(3000, () =>{
-    console.log("fdsfsdf");
 })
 
 

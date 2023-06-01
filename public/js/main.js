@@ -25,9 +25,9 @@ socket.on('isNameValid', (res) => {
   }
 });
 
-console.log('fdsf' + location.href);
+console.log(location.href);
 
-if (location.href == "http://localhost:3000/talk.html" || location.href == "fdsfhttps://chatsocket.javanoobguy.repl.co/talk.html" ) {
+if (location.href == "http://localhost:3000/talk.html" || location.href == "https://chatsocket.javanoobguy.repl.co/talk.html" ) {
   //socket.emit('getMessages');
   socket.emit('getMessages');
   console.log('requsisção de mensagens');
