@@ -59,8 +59,8 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
     });
 
     socket.on('getMessages',() =>{
-
-        socket.emit('update', messages);
+        
+        io.emit('update', messages);
 
     });
 
