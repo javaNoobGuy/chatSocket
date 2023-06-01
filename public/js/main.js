@@ -34,6 +34,7 @@ if (location.href == "http://localhost:3000/talk.html" || location.href == "http
 
 
 socket.on('update', (data) => {
+  console.log(data);
   messages = data;
   console.log(messages);
   renderM();

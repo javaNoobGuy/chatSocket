@@ -59,7 +59,7 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
     });
 
     socket.on('getMessages',() =>{
-        
+        console.log('pum');
         io.emit('update', messages);
 
     });
