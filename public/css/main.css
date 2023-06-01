@@ -45,6 +45,13 @@ main{
 
 }
 
+.center .talkbar{
+    align-self: flex-start;
+    width: 100%;
+    background-color: white;
+    
+}
+
 
 .upbar{
     display: flex;
@@ -72,8 +79,9 @@ main{
 }
 
 .talkbar{
-    margin-top: 18.7rem;
+
     position: absolute;
+    position:fixed;
 
 }
 
@@ -136,3 +144,4 @@ main{
     background-color: white;
     padding: 0.5em;
 }
+
