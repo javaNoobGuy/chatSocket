@@ -42,6 +42,10 @@ socket.on('update', (data) => {
 });
 
 function renderM() {
+  let nomeHeader = document.getElementById("nomeUser");
+  let nomeLate = document.getElementById("nomeUser2");
+  nomeLate.innerText = localStorage.getItem('nomeUser');
+  nomeHeader.innerText = localStorage.getItem('nomeUser');
   let mensagens = document.getElementById('campoMensagem');
   mensagens.innerHTML = "";
   for (let i = 0; i < messages.length; i++) {
