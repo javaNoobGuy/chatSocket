@@ -81,13 +81,13 @@ main{
     padding-left: 10px;
     position: absolute;
     height: 100%;
-    z-index: -1;
 
 }
 
 .lastMessage{
     max-width: 50px;
     width: min-content;
+    overflow: hidden;
     height: 100%;
 }
 
