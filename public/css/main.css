@@ -87,7 +87,6 @@ main{
 .lastMessage{
     max-width: 50px;
     width: min-content;
-    overflow: hidden;
     height: 100%;
 }
 
