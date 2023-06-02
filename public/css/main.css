@@ -142,27 +142,31 @@ main{
 }
 
 .userText span{
-    padding: 0.5em;
-    border-radius: 5px;
-    font-family:'Segoe UI',sans-serif;
-    color: black;
-    background-color: rgb(231, 255, 219);
+
+    
 }
 
 .userText{
     /*margin-top: 1.5em;*/
     margin-left: 10px;
+    background-color: rgb(231, 255, 219);
+    padding: 0.5em;
+    border-radius: 5px;
+    font-family:'Segoe UI',sans-serif;
+    color: black;
     
 }
 
 .othersText{
     /*margin-top: 1.5em;*/
     margin-left: 10px;
+    background-color: white;
+    border-radius: 5px;
 
 }
 
 .othersText span{
-    border-radius: 5px;
-    background-color: white;
+    
+    
 }
 
