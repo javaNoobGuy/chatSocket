@@ -57,9 +57,9 @@ function renderM() {
     let bold = document.createElement('b');
     bold.innerText = messages[i].owner.nome;
     bold.className = 'small';
-    span.innerText =  messages[i].content; 
-    mensagemAtual.append(bold);
-    mensagemAtual.append(document.createElement('br'));
+    span.append(bold);
+    span.append(document.createElement('br'));
+    span += messages[i].content; 
     mensagemAtual.append(span);
     if (messages[i].owner.nome == localStorage.getItem('nomeUser')) {
       mensagemAtual.className = 'userText';
