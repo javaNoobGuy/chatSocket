@@ -93,9 +93,9 @@ main{
 .talkbar{
 
     position: absolute;
-    margin-top: 910px;
+    margin-top: 900px;
     padding-left: 110px;
-    padding-bottom: 19px;
+    padding-bottom: 10px;
     position:fixed;
 
 }
