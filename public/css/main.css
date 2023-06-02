@@ -30,6 +30,7 @@ body{
 }
 
 header{
+    position: absolute;
     background-color: rgb(1, 129, 106);
     padding-top: 5px;
     padding-bottom: 10px;
