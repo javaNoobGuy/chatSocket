@@ -86,7 +86,8 @@ main{
 
 .lastMessage{
     max-width: 50px;
-    width: 100%;
+    width: min-content;
+    height: 100%;
 }
 
 .talkbar{
