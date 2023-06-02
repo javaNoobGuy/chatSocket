@@ -17,6 +17,7 @@ function User(id, nome){
     this.talks = [];
     this.id = id;
     this.nome = nome;
+    this.lastM = '';
     this.addTalk = function(anotherUser){
         let talkUsers = [this, anotherUser ];
 
@@ -70,6 +71,7 @@ io.on('connection', (socket) => {console.log('usuário conectado id da conexão 
             if(usuarios[i].nome == data.nome){
                 usuarios[i].id = socket.id;
                 messages.push(new Message(usuarios[i],data.content));
+                usuarios[i].lastM = new Message(usuarios[i],data.content);
                 console.log(messages);
                 io.emit('update', messages);
             }
@@ -104,6 +106,7 @@ socket.on('addUser', (data) =>{
     console.log(data);
     usuarios.push(new User(socket.id, data.nome));
     io.emit('update', messages);
+    io.emit('addUserOnList', usuarios);
     console.log(usuarios);
 
 });

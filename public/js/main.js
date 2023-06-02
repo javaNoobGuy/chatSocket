@@ -6,6 +6,7 @@ if (localStorage.getItem('nomeUser') == undefined) {
 }
 
 messages = [];
+usuarios = [];
 
 function login() {
 
@@ -40,6 +41,15 @@ socket.on('update', (data) => {
   renderM();
   
 });
+
+
+socket.on('addUserOnList', (data) =>{
+
+  usuarios = data;
+  renderU();
+
+
+})
 
 function renderM() {
   let nomeHeader = document.getElementById("nomeUser");
