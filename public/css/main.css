@@ -156,11 +156,6 @@ main{
 
 }
 
-.userText span{
-
-    
-}
-
 .userText{
     margin-top: 1.5em;
     margin-left: 10px;
@@ -181,10 +176,5 @@ main{
     color: black;
     border-radius: 5px;
 
-}
-
-.othersText span{
-    
-    
 }
 
