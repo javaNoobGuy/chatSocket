@@ -175,7 +175,10 @@ main{
 .othersText{
     margin-top: 1.5em;
     margin-left: 10px;
+    padding: 0.5em;
     background-color: white;
+    font-family:'Segoe UI',sans-serif;
+    color: black;
     border-radius: 5px;
 
 }
