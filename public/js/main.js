@@ -33,19 +33,12 @@ if (location.href == "http://localhost:3000/talk.html" || location.href == "http
   console.log('requsisção de mensagens');
 }
 
-
-
 socket.on('update', (data) => {
   console.log(data);
   messages = data;
   console.log(messages);
   renderM();
   
-});
-
-
-socket.on('userJoin',() =>{
-
 });
 
 function renderM() {
@@ -68,6 +61,33 @@ function renderM() {
     }
     mensagens.append(mensagemAtual);
   }
+}
+
+function renderU() {
+    let usersList = document.getElementById('usersList');
+    usersList.innerHTML = "";
+    for (let i = 0; i < usuarios.length; i++) {
+
+        let currentUserDiv = document.createElement('div');
+        currentUserDiv.className = 'userGeneral';
+        let userImg = document.createElement('img');
+        let title = document.createElement('div');
+        title.className = 'title';
+        let userName = document.createElement('div');
+        userName.className = 'userName';
+        userName.innerText = usuarios[i].nome;
+        let lastMessage = document.createElement('div');
+        lastMessage.className = "lastMessage";
+        lastMessage.innerText = usuarios[i].lastM;
+
+        currentUserDiv.append(userImg);
+        title.append(userName);
+        title.append(lastMessage);
+        currentUserDiv.append(title);
+        usersList.append(currentUserDiv);
+
+    }
+
 }
 
 function send() {
