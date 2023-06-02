@@ -147,7 +147,7 @@ main{
 }
 
 .userText{
-    /*margin-top: 1.5em;*/
+    margin-top: 1.5em;
     margin-left: 10px;
     background-color: rgb(231, 255, 219);
     padding: 0.5em;
@@ -158,7 +158,7 @@ main{
 }
 
 .othersText{
-    /*margin-top: 1.5em;*/
+    margin-top: 1.5em;
     margin-left: 10px;
     background-color: white;
     border-radius: 5px;
