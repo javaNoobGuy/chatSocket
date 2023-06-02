@@ -98,6 +98,7 @@ function send() {
   let content = document.getElementById('mensagem').value;
   let nome = localStorage.getItem('nomeUser');
   console.log('enviando mensagens ao servidor');
+  document.getElementById('lastM').innerText = content;
   socket.emit('sendMessage', { content, nome });
 
 }
